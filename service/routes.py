@@ -72,8 +72,12 @@ def create_accounts():
         # create a list of serialize() accounts
         # log the number of accounts being returned in the list 
         # return the list with a return code of status.HTTP_200_OK
+        accounts = Account.all()
+        account_list = [account.serialize() for account in accounts]
+         app.logger.info("Returning [%s] accounts", len(account_list))
+        return jsonify(account_list), status.HTTP_200_OK
 
-        return {list of accounts as json here + 200}
+      #  return {list of accounts as json here + 200}
 
 
     ######################################################################
